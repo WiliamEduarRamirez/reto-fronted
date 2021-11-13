@@ -40,9 +40,9 @@
                            <v-col cols="12">
                               <v-text-field
                                  outlined
+                                 :disabled="initialLoading"
                                  placeholder="Ejemplo: 73130183"
                                  label="Dni"
-                                 filled
                                  v-model="form.dni"
                                  @keypress="onlyNumber($event, form.dni, 8)"
                                  :rules="rules.rulesDni"
@@ -114,4 +114,11 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+/*::v-deep .theme--light.v-text-field--filled > .v-input__control > .v-input__slot {
+   background: rgba(0, 0, 0, 0.06);
+}*/
+::v-deep .v-text-field--outlined > .v-input__control > .v-input__slot {
+   background: rgba(0, 0, 0, 0.06);
+}
+</style>

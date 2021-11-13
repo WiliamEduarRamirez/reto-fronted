@@ -1,7 +1,9 @@
 <template>
    <v-app-bar height="70" app color="white" flat>
       <v-container class="py-0 fill-height">
-         <v-app-bar-nav-icon class="mt-3"></v-app-bar-nav-icon>
+         <v-btn class="mt-4 mr-2" color="primary">
+            <v-icon>mdi-menu</v-icon>
+         </v-btn>
          <v-img
             :src="require('@/assets/images/plaza-vea.png')"
             :max-width="$vuetify.breakpoint.xs ? '150' : '180'"
