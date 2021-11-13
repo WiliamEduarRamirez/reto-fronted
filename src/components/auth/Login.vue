@@ -1,10 +1,100 @@
 <template>
-   <div>Desde Login</div>
+   <v-app id="inspire">
+      <v-container>
+         <v-row>
+            <v-col cols="12" class="text-center">
+               <div class="mt-7">
+                  <div
+                     :style="{ color: $vuetify.theme.themes.light.primary }"
+                     class="text-h5 text-uppercase"
+                  >
+                     aprovecha los mejores precios
+                  </div>
+                  <div
+                     :style="{ color: $vuetify.theme.themes.light.primary }"
+                     class="text-h5 text-uppercase"
+                  >
+                     que tenemos para ti
+                  </div>
+               </div>
+            </v-col>
+            <v-col cols="12" class="d-flex mt-5 justify-center">
+               <v-card width="500" elevation="4">
+                  <v-form ref="form" v-model="valid" lazy-validation>
+                     <v-container>
+                        <v-row>
+                           <v-col cols="12" class="text-center">
+                              <div
+                                 :style="{ color: $vuetify.theme.themes.light.primary }"
+                                 class="text-h5 text-uppercase"
+                              >
+                                 ingresa tu dni
+                              </div>
+                              <div
+                                 :style="{ color: $vuetify.theme.themes.light.primary }"
+                                 class="text-h6 text-uppercase"
+                              >
+                                 y obten descuentos exclusivos
+                              </div>
+                           </v-col>
+                           <v-col cols="12">
+                              <v-text-field
+                                 outlined
+                                 placeholder="Ejemplo: 73130183"
+                                 label="Dni"
+                                 filled
+                                 @keypress="onlyNumber($event)"
+                                 :rules="rules.rulesDni"
+                                 :counter="8"
+                              ></v-text-field>
+                           </v-col>
+                           <v-col class="text-center mt-n8" cols="12">
+                              <v-btn :disabled="!valid" @click="login" rounded color="primary">
+                                 Ingresar
+                              </v-btn>
+                           </v-col>
+                        </v-row>
+                     </v-container>
+                  </v-form>
+               </v-card>
+            </v-col>
+            <v-col cols="12">
+               <div class="d-flex flex-column mt-2 align-center">
+                  <v-img
+                     class="d-flex justify-center"
+                     :src="require('@/assets/images/Plaza_Vea_2001.png')"
+                     :aspect-ratio="16 / 9"
+                     width="400"
+                  />
+               </div>
+            </v-col>
+         </v-row>
+      </v-container>
+   </v-app>
 </template>
 
 <script>
+import { REGEX_VALID_NUMBERS } from '@/constants/validations-config';
+
 export default {
    name: 'Login',
+   data: () => ({
+      valid: true,
+      rules: {
+         rulesDni: [
+            (v) => !!v || 'Este campo es requerido',
+            (v) => REGEX_VALID_NUMBERS.test(v) || 'Este campo solo acepta números',
+            (v) => (v && v.length >= 8) || 'DNI debe tener 8 caracteres',
+            (v) => (v && v.length <= 8) || 'DNI debe tener 8 caracteres',
+         ],
+      },
+   }),
+   methods: {
+      login() {
+         if (!this.$refs.form.validate()) return;
+         this.$router.push({ path: '/products' });
+      },
+   },
 };
 </script>
 
