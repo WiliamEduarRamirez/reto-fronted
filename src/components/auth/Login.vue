@@ -8,7 +8,7 @@
                      :style="{ color: $vuetify.theme.themes.light.primary }"
                      class="text-h5 text-uppercase"
                   >
-                     aprovecha los mejores precios
+                     <strong> aprovecha los mejores precios </strong>
                   </div>
                   <div
                      :style="{ color: $vuetify.theme.themes.light.primary }"
@@ -19,7 +19,7 @@
                </div>
             </v-col>
             <v-col cols="12" class="d-flex mt-5 justify-center">
-               <v-card width="500" elevation="4">
+               <v-card style="border-radius: 25px" width="500" elevation="4">
                   <v-form ref="form" v-model="valid" lazy-validation>
                      <v-container>
                         <v-row>
@@ -28,7 +28,7 @@
                                  :style="{ color: $vuetify.theme.themes.light.primary }"
                                  class="text-h5 text-uppercase"
                               >
-                                 ingresa tu dni
+                                 <strong> ingresa tu dni </strong>
                               </div>
                               <div
                                  :style="{ color: $vuetify.theme.themes.light.primary }"
