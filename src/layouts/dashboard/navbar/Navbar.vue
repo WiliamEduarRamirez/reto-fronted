@@ -10,7 +10,7 @@
          <v-spacer></v-spacer>
       </v-container>
       <div class="d-flex flex-row">
-         <strong v-if="!$vuetify.breakpoint.xs" class="mt-2"> Wiliam </strong>
+         <strong v-if="!$vuetify.breakpoint.xs" class="mt-2"> {{ user }} </strong>
          <v-menu
             bottom
             left
@@ -29,7 +29,7 @@
                <div v-if="$vuetify.breakpoint.xs">
                   <v-list-item>
                      <v-list-item-title>
-                        <strong> Wiliam </strong>
+                        <strong> {{ user }} </strong>
                      </v-list-item-title>
                   </v-list-item>
                   <v-divider></v-divider>
@@ -44,10 +44,15 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
+
 export default {
    name: 'Navbar',
+   computed: {
+      ...mapGetters('auth', ['user']),
+   },
    methods: {
-      logout() {},
+      ...mapActions('auth', ['logout']),
    },
 };
 </script>

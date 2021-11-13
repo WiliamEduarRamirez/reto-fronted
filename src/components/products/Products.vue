@@ -3,7 +3,7 @@
       <v-row>
          <v-col>
             <div :style="{ color: '#00577D' }" class="text-h4 text-center">
-               <strong> ¡Hola Wiliam! </strong>
+               <strong> ¡Hola {{ user }}! </strong>
             </div>
          </v-col>
          <v-col cols="12">
@@ -26,6 +26,7 @@ export default {
    components: { ListProducts, ListCategories },
    computed: {
       ...mapGetters('products', ['products']),
+      ...mapGetters('auth', ['user']),
    },
    methods: {
       ...mapActions('products', ['loadProducts', 'loadCategories']),

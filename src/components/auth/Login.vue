@@ -43,13 +43,20 @@
                                  placeholder="Ejemplo: 73130183"
                                  label="Dni"
                                  filled
+                                 v-model="form.dni"
                                  @keypress="onlyNumber($event)"
                                  :rules="rules.rulesDni"
                                  :counter="8"
                               ></v-text-field>
                            </v-col>
                            <v-col class="text-center mt-n8" cols="12">
-                              <v-btn :disabled="!valid" @click="login" rounded color="primary">
+                              <v-btn
+                                 :loading="initialLoading"
+                                 :disabled="!valid"
+                                 @click="signIn"
+                                 rounded
+                                 color="primary"
+                              >
                                  Ingresar
                               </v-btn>
                            </v-col>
@@ -75,11 +82,16 @@
 
 <script>
 import { REGEX_VALID_NUMBERS } from '@/constants/validations-config';
+import { mapActions, mapGetters } from 'vuex';
 
+const defaultForm = {
+   dni: null,
+};
 export default {
    name: 'Login',
    data: () => ({
       valid: true,
+      form: { ...defaultForm },
       rules: {
          rulesDni: [
             (v) => !!v || 'Este campo es requerido',
@@ -89,10 +101,15 @@ export default {
          ],
       },
    }),
+   computed: {
+      ...mapGetters('auth', ['initialLoading']),
+   },
    methods: {
-      login() {
+      ...mapActions('auth', ['login']),
+      async signIn() {
          if (!this.$refs.form.validate()) return;
-         this.$router.push({ path: '/products' });
+         await this.login(this.form);
+         /*this.$router.push({ path: '/products' });*/
       },
    },
 };
