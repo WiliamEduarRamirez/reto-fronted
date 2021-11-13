@@ -11,4 +11,7 @@ export default {
    setCategories: (state, payload) => {
       state.categories = payload;
    },
+   setModeCategories: (state, payload) => {
+      state.categoriesMode = payload;
+   },
 };

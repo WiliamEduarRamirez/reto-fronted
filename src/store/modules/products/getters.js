@@ -3,4 +3,5 @@ export default {
    loadingCategories: (state) => state.loadingCategories,
    products: (state) => state.products,
    categories: (state) => state.categories,
+   categoriesMode: (state) => state.categoriesMode,
 };

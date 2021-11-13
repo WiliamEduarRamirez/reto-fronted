@@ -6,7 +6,18 @@ export default {
       try {
          const response = await productsServices.list();
          commit('setProducts', response);
-         console.log(response);
+      } catch (e) {
+         console.log(e);
+      } finally {
+         commit('setLoadingProducts', false);
+      }
+   },
+   async listProductsForCategory({ commit }, payload) {
+      commit('setLoadingProducts', true);
+      commit('setModeCategories', payload);
+      try {
+         const response = await productsServices.listForCategory(payload);
+         commit('setProducts', response);
       } catch (e) {
          console.log(e);
       } finally {
@@ -18,7 +29,6 @@ export default {
       try {
          const response = await productsServices.listCategories();
          commit('setCategories', response);
-         console.log(response);
       } catch (e) {
          console.log(e);
       } finally {

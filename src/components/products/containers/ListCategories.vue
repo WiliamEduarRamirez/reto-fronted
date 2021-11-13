@@ -3,10 +3,15 @@
       <div :style="{ color: $vuetify.theme.themes.light.primary }" class="text-h4 mb-3">
          <strong> Categorías </strong>
       </div>
-      <custom-progress-circular v-if="loadingCategories"></custom-progress-circular>
+      <custom-progress-circular class="mt-15" v-if="loadingCategories"></custom-progress-circular>
       <v-row v-else>
          <v-col cols="12" sm="6" md="3" :key="index" v-for="(tempCategory, index) in categories">
-            <v-card elevation="4" @click="onChangeCategory" rounded max-width="450">
+            <v-card
+               elevation="4"
+               @click="() => onChangeCategory(tempCategory)"
+               rounded
+               max-width="450"
+            >
                <v-img
                   :src="`https://picsum.photos/500/300?image=${index * 5 + 10}`"
                   class="white--text align-end"
@@ -28,7 +33,7 @@
 
 <script>
 import CustomProgressCircular from '@/common/custom-progress-circular/CustomProgressCircular';
-import { mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 export default {
    name: 'ListCategories',
    components: { CustomProgressCircular },
@@ -36,8 +41,9 @@ export default {
       ...mapGetters('products', ['loadingCategories', 'categories']),
    },
    methods: {
-      onChangeCategory() {
-         console.log('entra aqui');
+      ...mapActions('products', ['listProductsForCategory']),
+      async onChangeCategory(category) {
+         await this.listProductsForCategory(category);
       },
    },
 };

@@ -3,4 +3,5 @@ export default {
    loadingCategories: false,
    products: [],
    categories: [],
+   categoriesMode: null,
 };

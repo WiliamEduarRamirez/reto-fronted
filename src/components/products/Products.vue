@@ -1,6 +1,11 @@
 <template>
    <v-container>
       <v-row>
+         <v-col>
+            <div :style="{ color: '#00577D' }" class="text-h4 text-center">
+               <strong> ¡Hola Wiliam! </strong>
+            </div>
+         </v-col>
          <v-col cols="12">
             <list-categories></list-categories>
          </v-col>
@@ -28,7 +33,6 @@ export default {
    created() {
       this.loadProducts();
       this.loadCategories();
-      /*console.log(this.products);*/
    },
 };
 </script>
