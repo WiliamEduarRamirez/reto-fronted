@@ -44,7 +44,7 @@
                                  label="Dni"
                                  filled
                                  v-model="form.dni"
-                                 @keypress="onlyNumber($event)"
+                                 @keypress="onlyNumber($event, form.dni, 8)"
                                  :rules="rules.rulesDni"
                                  :counter="8"
                               ></v-text-field>
@@ -109,7 +109,6 @@ export default {
       async signIn() {
          if (!this.$refs.form.validate()) return;
          await this.login(this.form);
-         /*this.$router.push({ path: '/products' });*/
       },
    },
 };
