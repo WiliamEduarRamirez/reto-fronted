@@ -1,15 +1,17 @@
 import axios from "axios";
+import { BASE_URL } from "@/constants/app-constants";
 
 const sleep = (delay) => {
   return new Promise((resolve) => {
     setTimeout(resolve, delay);
   });
 };
-axios.defaults.baseURL = "http://localhost:5000/api";
-axios.interceptors.response.use(async (response) => {
+axios.defaults.baseURL = BASE_URL;
+
+/*axios.interceptors.response.use(async (response) => {
   await sleep(1000);
   return response;
-});
+});*/
 
 const responseBody = (response) => response.data;
 
