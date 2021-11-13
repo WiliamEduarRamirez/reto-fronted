@@ -1,10 +1,12 @@
 <template>
-   <v-container class="ma-2">
+   <v-container>
       <v-row>
-         <list-categories></list-categories>
-      </v-row>
-      <v-row>
-         <list-products></list-products>
+         <v-col cols="12">
+            <list-categories></list-categories>
+         </v-col>
+         <v-col cols="12">
+            <list-products></list-products>
+         </v-col>
       </v-row>
    </v-container>
 </template>

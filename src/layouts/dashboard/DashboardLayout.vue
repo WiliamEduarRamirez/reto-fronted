@@ -1,6 +1,6 @@
 <template>
    <v-app id="inspire">
-      <v-app-bar app color="white" flat>
+      <v-app-bar height="70" app color="white" flat>
          <v-container class="py-0 fill-height">
             <v-app-bar-nav-icon class="mt-3"></v-app-bar-nav-icon>
             <v-img :src="require('@/assets/images/plaza-vea.png')" max-width="180"></v-img>
@@ -12,7 +12,7 @@
          </v-container>
       </v-app-bar>
       <v-main>
-         <v-container fluid>
+         <v-container>
             <v-fade-transition mode="out-in">
                <router-view />
             </v-fade-transition>
