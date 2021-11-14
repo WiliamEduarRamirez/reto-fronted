@@ -40,6 +40,7 @@
                            <v-col cols="12">
                               <v-text-field
                                  outlined
+                                 @keypress.enter="signIn"
                                  :disabled="initialLoading"
                                  placeholder="Ejemplo: 73130183"
                                  label="Dni"
@@ -55,9 +56,11 @@
                                  :disabled="!valid"
                                  @click="signIn"
                                  rounded
-                                 color="primary"
+                                 color="#FFE81E"
                               >
-                                 Ingresar
+                                 <span :style="{ color: $vuetify.theme.themes.light.primary }">
+                                    Ingresar
+                                 </span>
                               </v-btn>
                            </v-col>
                         </v-row>

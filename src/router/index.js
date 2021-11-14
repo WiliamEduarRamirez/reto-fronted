@@ -16,19 +16,18 @@ const routes = [
          /* authorize: [],*/
       },
    },
-   /*   {
-      path: '/:notFound(.*)',
-      component: () => import('../layouts/errors/NotFound'),
-      meta: {
-         requiresAuth: false,
-         authorize: [],
-      },
-   },*/
    {
       path: '/products',
       name: '',
       component: () => import('@/layouts/dashboard/DashboardLayout'),
       children: [...productsRouters],
+   },
+   {
+      path: '/:notFound(.*)',
+      component: () => import('@/layouts/errors/NotFound'),
+      meta: {
+         requiresAuth: false,
+      },
    },
 ];
 

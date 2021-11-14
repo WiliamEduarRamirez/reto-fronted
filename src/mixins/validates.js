@@ -1,6 +1,10 @@
 export default {
    methods: {
       onlyNumber(evt, value, limit) {
+         if (evt.keyCode === 13) {
+            evt.preventDefault();
+            return;
+         }
          if (value && value.length > limit - 1) {
             evt.preventDefault();
             return;
