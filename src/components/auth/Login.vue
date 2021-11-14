@@ -72,8 +72,7 @@
                <div class="d-flex flex-column mt-2 align-center">
                   <v-img
                      class="d-flex justify-center"
-                     :src="require('@/assets/images/Plaza_Vea_2001.png')"
-                     :aspect-ratio="16 / 9"
+                     :src="require('@/assets/images/plaza_vea_login.png')"
                      width="400"
                   />
                </div>
